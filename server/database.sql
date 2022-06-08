@@ -8,7 +8,7 @@ create TABLE task(
     id SERIAL PRIMARY KEY,
     title VARCHAR(255),
     content VARCHAR(255),
-    creationDate DATE NOT NULL,
+    task_assigned_in DATE,
     user_id INTEGER,
     FOREIGN KEY (user_id) REFERENCES person (id)
 )

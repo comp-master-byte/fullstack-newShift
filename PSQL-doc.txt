@@ -1,0 +1,2 @@
+Основные команды в postgres: 
+1) Удаление всей таблицы: DROP TABLE <table_name>
