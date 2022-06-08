@@ -1,8 +1,11 @@
 const express = require("express")
+const userRouter = require("./routes/user.routes")
 
 const PORT = 8080
 
 const app = express()
-app.get("/", (req, res) => res.send("Server started"))
+
+app.use(express.json())
+app.use("/api", userRouter)
 
 app.listen(PORT, () => console.log(`Server has been started on PORT: ${PORT}`))
