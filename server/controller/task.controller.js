@@ -9,14 +9,8 @@ class TaskController {
         res.json(newTask.rows[0])
     }
 
-    async getTasksByUser(req, res) { 
-        const id = parseInt(req.params.id)
-        const tasks = await db.query(`SELECT * FROM task WHERE user_id = $1`, [id])
-        res.json(tasks.rows)
-    }
-
     async getTasksByUserAndStatus(req,res) {
-        const id = req.query.id
+        const id = parseInt(req.params.id)
         const status = req.query.status
         const filteredTasks = await db.query(`SELECT * FROM task WHERE status = $1 AND user_id = $2`, [status, id])
         res.json(filteredTasks.rows)
