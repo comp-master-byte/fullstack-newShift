@@ -1,12 +1,14 @@
 import React from 'react'
-import styles from "./styles/main.module.scss"
-import node from "./images/node.jpg"
+import "./styles/main.scss"
+import { Routes, Route } from 'react-router-dom'
+import { TaskPage } from './Pages/TaskPage.jsx'
 
 export const App = () => {
     return (
         <div>
-            <h1 className={styles.title}>Webpack configured!</h1>
-            <img src={node} alt="" />
+            <Routes>
+                <Route path="/" element={<TaskPage />} />
+            </Routes>
         </div>
     )
 }
