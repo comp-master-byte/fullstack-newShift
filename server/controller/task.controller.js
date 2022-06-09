@@ -2,10 +2,10 @@ const db = require("../db")
 
 class TaskController {
     async createTask(req, res) {
-        const {title, content, taskAssignedIn, userId, taskFinishedIn} = req.body
+        const {title, content, taskAssignedIn, userId, taskFinishedIn, status} = req.body
         const newTask = await db.query(
-            `INSERT INTO task (title, content, task_assigned_in, user_id, task_finished_in) values ($1, $2, $3, $4, $5) RETURNING *`, 
-            [title, content, taskAssignedIn, userId, taskFinishedIn])
+            `INSERT INTO task (title, content, task_assigned_in, user_id, task_finished_in, status) values ($1, $2, $3, $4, $5, $6) RETURNING *`, 
+            [title, content, taskAssignedIn, userId, taskFinishedIn, status])
         res.json(newTask.rows[0])
     }
 
@@ -13,6 +13,13 @@ class TaskController {
         const id = parseInt(req.params.id)
         const tasks = await db.query(`SELECT * FROM task WHERE user_id = $1`, [id])
         res.json(tasks.rows)
+    }
+
+    async getTasksByUserAndStatus(req,res) {
+        const id = req.query.id
+        const status = req.query.status
+        const filteredTasks = await db.query(`SELECT * FROM task WHERE status = $1 AND user_id = $2`, [status, id])
+        res.json(filteredTasks.rows)
     }
 
     async updateTask(req, res) { 
