@@ -17,12 +17,12 @@ class UserController {
     }
     async updateUser(req, res) {
         const {id, name, surname} = req.body
-        const updateUser = await db.query(`UPDATE person set name = $1, surname = $2 where id = $3 RETURNING *`, 
+        const updatedUser = await db.query(`UPDATE person set name = $1, surname = $2 where id = $3 RETURNING *`, 
             [name, surname, id])
-        res.json(updateUser.rows[0])
+        res.json(updatedUser.rows[0])
     }
     async deleteUser(req, res) {
-        const id = req.params.id
+        const id = parseInt(req.params.id)
         const user = await db.query(`DELETE FROM person where id = $1`, [id])
         res.json(user.rows[0])
     }
