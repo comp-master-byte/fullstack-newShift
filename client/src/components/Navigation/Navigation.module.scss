@@ -1,0 +1,21 @@
+.navigation {
+    // padding-top: 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 0 2px #000;
+    margin: 1rem;
+    padding: .5rem;
+    border-radius: 8px;
+}
+
+.navigationList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.navigation__title {
+    font-size: 1.5rem;
+    color: #000;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
