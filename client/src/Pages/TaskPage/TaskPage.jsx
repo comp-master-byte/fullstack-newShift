@@ -96,7 +96,9 @@ export const TaskPage = () => {
                             key={item.id}
                             className={styles.item}
                         >
-                            {item.title}
+                            <div className={styles.item__title}>{item.title}</div>
+                            <div className={styles.item__content}>{item.content}</div>
+                            <div className={styles.item__dateTime}>10.06.2022</div>
                         </div>
                     )}
                 </div>

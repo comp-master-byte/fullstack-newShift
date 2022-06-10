@@ -27,4 +27,24 @@
     margin: 5px 0;
     cursor: grab;
     background-color: #fcfcf9;
+    color: #000;
+    position: relative;
+}
+
+.item__title {
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin-bottom: .5rem;
+}
+
+.item__content {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+}
+
+.item__dateTime {
+    position: absolute;
+    bottom: .625rem;
+    right: .625rem;
 }
