@@ -1,7 +1,7 @@
 import React from 'react'
 import "./styles/main.scss"
 import { Routes, Route } from 'react-router-dom'
-import { TaskPage } from './Pages/TaskPage.jsx'
+import { TaskPage } from './Pages/TaskPage/TaskPage.jsx'
 
 export const App = () => {
     return (
