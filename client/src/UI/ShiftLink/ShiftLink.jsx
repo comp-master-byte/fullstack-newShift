@@ -13,8 +13,10 @@ export const ShiftLink = (props) => {
             to={to}
             className={match ? styles.activeShiftLink : styles.shiftLink}
         >
-            <img src={icon} alt="" />
-            {textLink}
+            <div className={styles.innerLink}>
+                <div className={styles.icon}>{icon}</div>
+                {textLink}
+            </div>
         </Link>
     )
 }

@@ -8,7 +8,7 @@ import { SettingsPage } from './Pages/Settings/SettingsPage.jsx'
 
 export const App = () => {
     return (
-        <div>
+        <div className='app'>
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<TaskPage />} />

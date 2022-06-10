@@ -6,15 +6,36 @@
 
 .contentBlock {
     display: flex;
+    transform: translateX(-15%);
+    transition: .5s;
 }
 
 .contentMain {
-    border-left: 1px solid #000;
-    flex-basis: 80%;
-    padding: 3rem 2rem;
+    padding: 0rem 2rem 3rem 2rem;
 }
 
-.navigationMain {
-    flex-basis: 20%;
+.active {
+    display: flex;
+    transition: .5s;
+    transform: translateX(0%);
+}
+
+.isMenuOpen {
+    position: relative;
     padding-right: 1rem;
+}
+
+.isMenuOpen__btn {
+    position: absolute;
+    width: 2rem;
+    height: 4rem;
+    background-color: #fff;
+    top: .5rem;
+    right: .5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
 }
