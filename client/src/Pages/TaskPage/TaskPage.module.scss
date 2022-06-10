@@ -1,36 +1,30 @@
-.taskpage {
+.taskPage {
+    display: flex;
+}
+
+.board {
+    min-width: 20rem;
+    min-height: 15rem;
+    box-shadow: 0 0 5px #4169E1;
+    padding: 1.325rem .625rem;
+    border-radius: .875rem;
+    margin: .625rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.board__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.item {
     width: 100%;
-}
-
-.card {
-    width: 15rem;
-    min-height: 10rem;
-    background-color: #fff;
-    box-shadow: 0 0 3px #000;
-    border-radius: .5rem;
-    padding: 1rem;
-    position: relative;
-}
-
-.cardInner {
-
-    .cardInner__title {
-        margin-bottom: 0.5rem;
-        font-size: 1.125rem;
-        font-weight: 500;
-        color: #000;
-    }
-
-    .cardInner__text {
-        font-size: 1rem;
-        font-weight: 400;
-        color: #000;
-        margin-bottom: 2rem;
-    }
-
-    .cardInner__date {
-        position: absolute;
-        bottom: 1rem;
-        right: 1rem;
-    }
+    border: 1px solid #4169E1;
+    padding: .625rem;
+    border-radius: 6px;
+    margin: 5px 0;
+    cursor: grab;
+    background-color: #fcfcf9;
 }
