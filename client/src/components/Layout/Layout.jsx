@@ -10,6 +10,8 @@ export const Layout = () => {
 
     const [isOpenMenu, setIsOpenMenu] = useState(false)
 
+    const openMenubarHandler = () => setIsOpenMenu(prev => !prev)
+
     return (
         <>
             <div className={styles.container}>
@@ -19,7 +21,7 @@ export const Layout = () => {
             <div className={styles.container}>
                 <div className={isOpenMenu ? (styles.contentBlock && styles.active) : styles.contentBlock}>
                     <div className={styles.isMenuOpen}>
-                        <div onClick={() => setIsOpenMenu(prev => !prev)} className={styles.isMenuOpen__btn}>
+                        <div onClick={openMenubarHandler} className={styles.isMenuOpen__btn}>
                             {isOpenMenu ? <IoEnterOutline style={{ transform: "rotate(180deg)" }} size='20' /> : <ImExit size='20' />}
                         </div>
                         <div className={styles.navigationMain}>
