@@ -1,13 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import styles from "./TasksPage.module.scss"
 import { Card } from "../../components/Card/Card.jsx"
 import { Board } from "../../components/Board/Board.jsx"
 import { DropWrapper } from "../../components/DropWrapper/DropWrapper.jsx"
-import { statuses, data } from '../../data/index.js'
+import { statuses } from '../../data/index.js'
 
 export const TasksPage = () => {
 
-    const [items, setItems] = useState(data);
+    const allDataTasks = useSelector(state => state.tasks.data)
+
+    const [items, setItems] = useState(allDataTasks);
 
     const onDrop = (item, monitor, status) => {
         const mapping = statuses.find(si => si.status === status);
