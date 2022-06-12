@@ -4,7 +4,7 @@ import { Link, useMatch } from 'react-router-dom'
 
 export const ShiftLink = (props) => {
 
-    const { to, textLink, icon } = props
+    const { to, textLink, icon, ...rest } = props
 
     const match = useMatch(to)
 
@@ -12,6 +12,7 @@ export const ShiftLink = (props) => {
         <Link
             to={to}
             className={match ? styles.activeShiftLink : styles.shiftLink}
+            {...rest}
         >
             <div className={styles.innerLink}>
                 <div className={styles.icon}>{icon}</div>
