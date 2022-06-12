@@ -29,7 +29,7 @@ const initialState = {
             content: "Finish reading Intro to UI/UX"
         }
     ]
-}
+};
 
 export const addTaskReducer = (state = initialState, action) => {
     switch(action.type) {
@@ -47,6 +47,6 @@ export const addTaskReducer = (state = initialState, action) => {
                 })
             }
         default:
-            return state
-    }
-}
+            return state;
+    };
+};

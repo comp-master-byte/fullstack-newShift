@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { Form } from "../../components/Form/Form.jsx";
 import { editTaskActionCreator } from "../../redux/actions.js";
+import { ConfirmationModal } from "../../UI/ConfirmationModal/ConfirmationModal.jsx";
 
 export const EditPage = () => {
 
@@ -12,6 +13,7 @@ export const EditPage = () => {
     const dispatch = useDispatch();
 
     const [newDataTask, setNewDataTask] = useState({ title: "", content: "" });
+    const [isVisible, setIsVisible] = useState(false)
 
     function dataSubmitHandler(event) {
 
@@ -29,8 +31,13 @@ export const EditPage = () => {
 
         dispatch(editTaskActionCreator(taskEdited));
         setNewDataTask({ title: "", content: "" });
-        navigate('/');
+
+        setIsVisible(true)
+        // navigate('/');
+
     }
+
+    const closeModalHandler = () => setIsVisible(false)
 
     return (
         <div>
@@ -41,6 +48,10 @@ export const EditPage = () => {
                 contentValue={newDataTask.content}
                 onChangeTitle={event => setNewDataTask({ ...newDataTask, title: event.target.value })}
                 onChangeContent={event => setNewDataTask({ ...newDataTask, content: event.target.value })}
+            />
+            <ConfirmationModal
+                visible={isVisible}
+                onClose={closeModalHandler}
             />
         </div>
     )

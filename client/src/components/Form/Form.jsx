@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import styles from "./Form.module.scss";
 import { ShiftInput } from "../../UI/ShiftInput/ShiftInput.jsx";
+import { ShiftBtn } from "../../UI/ShiftBtn/ShiftBtn.jsx";
 
 export const Form = (props) => {
 
@@ -32,9 +33,13 @@ export const Form = (props) => {
                     placeholder="Описание"
                     className={styles.form__input}
                 />
-                <div className={styles.form__btn}>
+
+                <div className={styles.form__btns}>
                     <ShiftInput type='submit' placeholder="text" />
+                    <ShiftBtn btnText={"Удалить"} error />
                 </div>
+
+
             </form>
         </div>
     )
