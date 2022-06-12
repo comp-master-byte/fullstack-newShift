@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { Form } from "../../components/Form/Form.jsx";
-import { editTaskActionCreator } from "../../redux/actions.js";
+import { deleteTaskActionCreator, editTaskActionCreator } from "../../redux/actions.js";
 import { ConfirmationModal } from "../../UI/ConfirmationModal/ConfirmationModal.jsx";
 
 export const EditPage = () => {
@@ -60,6 +60,7 @@ export const EditPage = () => {
     const confirmDeleteSuccessActionHandler = () => {
         console.log("Задача удалена")
         setIsDeleteVisible(false);
+        dispatch(deleteTaskActionCreator(taskId))
     }
 
 

@@ -1,4 +1,4 @@
-import { ADD_TASK, EDIT_TASK } from "../types";
+import { ADD_TASK, DELETE_TASK, EDIT_TASK } from "../types";
 
 const initialState = {
     data: [
@@ -45,7 +45,9 @@ export const addTaskReducer = (state = initialState, action) => {
                     };
                     return item;
                 })
-            }
+            };
+        case DELETE_TASK:
+            return {...state, data: state.data.filter(item => item.id !== parseInt(action.payload))}
         default:
             return state;
     };
