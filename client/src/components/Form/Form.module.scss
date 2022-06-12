@@ -1,0 +1,23 @@
+.form {
+    margin-top: 1rem;
+}
+
+.form__title {
+    font-size: 1.5rem;
+    color: #000;
+    font-weight: 500;
+}
+
+.form__input {
+    margin-right: 1rem;
+
+    &:nth-child(2) {
+        margin-right: 0 !important;
+    }
+}
+
+.form__btn {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
