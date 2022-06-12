@@ -11,13 +11,15 @@ export const Form = (props) => {
         contentValue,
         onChangeTitle,
         onChangeContent,
-        titleText
+        titleText,
+        confirmEditAction,
+        confirmDeleteAction
     } = props;
 
     return (
         <div className={styles.creationWrapper}>
             <div className={styles.form__title}>{titleText}</div>
-            <form className={styles.form} onSubmit={onSubmit}>
+            <div className={styles.form}>
                 <ShiftInput
                     value={titleValue}
                     onChange={onChangeTitle}
@@ -34,13 +36,12 @@ export const Form = (props) => {
                     className={styles.form__input}
                 />
 
-                <div className={styles.form__btns}>
-                    <ShiftInput type='submit' placeholder="text" />
-                    <ShiftBtn btnText={"Удалить"} error />
+                <div className={styles.formSubmit__btn}>
+                    <ShiftBtn onClick={confirmDeleteAction} btnText={"Удалить"} error />
+                    <ShiftBtn onClick={confirmEditAction} btnText={"Отменить"} warning />
+                    <ShiftBtn onClick={onSubmit} btnText={"Изменить"} primary />
                 </div>
-
-
-            </form>
+            </div>
         </div>
     )
 }

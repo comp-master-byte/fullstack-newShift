@@ -14,6 +14,8 @@ export const EditPage = () => {
 
     const [newDataTask, setNewDataTask] = useState({ title: "", content: "" });
     const [isVisible, setIsVisible] = useState(false)
+    const [isDeleteVisible, setIsDeleteVisible] = useState(false)
+    const [confirmText, setConfirmText] = useState("")
 
     function dataSubmitHandler(event) {
 
@@ -32,12 +34,34 @@ export const EditPage = () => {
         dispatch(editTaskActionCreator(taskEdited));
         setNewDataTask({ title: "", content: "" });
 
-        setIsVisible(true)
-        // navigate('/');
+        navigate('/');
 
     }
 
-    const closeModalHandler = () => setIsVisible(false)
+    const closeEditModalHandler = () => setIsVisible(false);
+    const confirmDeleteCloseModal = () => setIsDeleteVisible(false);
+
+    const confirmEditActionHandler = () => {
+        setIsVisible(true);
+        setConfirmText("Вы действительно хотите отменить редактирование?");
+    }
+
+    const confirmDeleteActionHandler = () => {
+        setIsDeleteVisible(true);
+        setConfirmText("Вы действительно хотите удалить задачу?");
+    }
+
+    const confirmEditSuccessActionHandler = () => {
+        setIsVisible(false);
+        setNewDataTask({ title: "", content: "" });
+        navigate("/");
+    }
+
+    const confirmDeleteSuccessActionHandler = () => {
+        console.log("Задача удалена")
+        setIsDeleteVisible(false);
+    }
+
 
     return (
         <div>
@@ -48,10 +72,26 @@ export const EditPage = () => {
                 contentValue={newDataTask.content}
                 onChangeTitle={event => setNewDataTask({ ...newDataTask, title: event.target.value })}
                 onChangeContent={event => setNewDataTask({ ...newDataTask, content: event.target.value })}
+                confirmEditAction={confirmEditActionHandler}
+                confirmDeleteAction={confirmDeleteActionHandler}
             />
+
+            {/* Для редактирования */}
             <ConfirmationModal
                 visible={isVisible}
-                onClose={closeModalHandler}
+                onClose={closeEditModalHandler}
+                actionText={confirmText}
+                successClick={confirmEditSuccessActionHandler}
+                errorClick={closeEditModalHandler}
+            />
+
+            {/* Для удаления */}
+            <ConfirmationModal
+                visible={isDeleteVisible}
+                onClose={confirmDeleteCloseModal}
+                actionText={confirmText}
+                successClick={confirmDeleteSuccessActionHandler}
+                errorClick={confirmDeleteCloseModal}
             />
         </div>
     )

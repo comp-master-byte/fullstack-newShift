@@ -19,3 +19,22 @@
     align-items: center;
     justify-content: center;
 }
+
+.confirmationModal__title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #000;
+}
+
+.confirmationModal__text {
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.confirmationModal__btns {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
