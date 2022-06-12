@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux"
+import { useDispatch } from "react-redux";
 import { addTaskActionCreator } from "../../redux/actions";
 import { Form } from "../../components/Form/Form.jsx";
 
 export const CreateTaskPage = () => {
 
     const dispatch = useDispatch();
-
     const [newDataTask, setNewDataTask] = useState({ title: "", content: "" });
 
     function dataSubmitHandler(event) {
@@ -35,6 +34,7 @@ export const CreateTaskPage = () => {
             contentValue={newDataTask.content}
             onChangeTitle={event => setNewDataTask({ ...newDataTask, title: event.target.value })}
             onChangeContent={event => setNewDataTask({ ...newDataTask, content: event.target.value })}
+            primaryBtnText={"Добавить"}
         />
     )
 }

@@ -58,11 +58,9 @@ export const EditPage = () => {
     }
 
     const confirmDeleteSuccessActionHandler = () => {
-        console.log("Задача удалена")
         setIsDeleteVisible(false);
         dispatch(deleteTaskActionCreator(taskId))
     }
-
 
     return (
         <div>
@@ -75,6 +73,8 @@ export const EditPage = () => {
                 onChangeContent={event => setNewDataTask({ ...newDataTask, content: event.target.value })}
                 confirmEditAction={confirmEditActionHandler}
                 confirmDeleteAction={confirmDeleteActionHandler}
+                primaryBtnText={"Изменить"}
+                editPageButtons
             />
 
             {/* Для редактирования */}
