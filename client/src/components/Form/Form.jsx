@@ -14,7 +14,7 @@ export const Form = (props) => {
     } = props;
 
     return (
-        <Fragment>
+        <div className={styles.creationWrapper}>
             <div className={styles.form__title}>{titleText}</div>
             <form className={styles.form} onSubmit={onSubmit}>
                 <ShiftInput
@@ -33,9 +33,9 @@ export const Form = (props) => {
                     className={styles.form__input}
                 />
                 <div className={styles.form__btn}>
-                    <ShiftInput type='submit' />
+                    <ShiftInput type='submit' placeholder="text" />
                 </div>
             </form>
-        </Fragment>
+        </div>
     )
 }

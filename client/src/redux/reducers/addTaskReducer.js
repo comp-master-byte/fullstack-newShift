@@ -1,4 +1,4 @@
-import { ADD_TASK } from "../types"
+import { ADD_TASK, EDIT_TASK } from "../types";
 
 const initialState = {
     data: [
@@ -34,7 +34,18 @@ const initialState = {
 export const addTaskReducer = (state = initialState, action) => {
     switch(action.type) {
         case ADD_TASK:
-            return {...state, data: state.data.concat(action.payload)}
+            return {...state, data: state.data.concat(action.payload)};
+        case EDIT_TASK: 
+            return {
+                ...state, 
+                data: state.data.map(item => {
+                    if(item.id === parseInt(action.payload.id)) {
+                        item.title = action.payload.title ,
+                        item.content = action.payload.content;
+                    };
+                    return item;
+                })
+            }
         default:
             return state
     }

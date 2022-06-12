@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux"
-import styles from "./CreateTaskPage.module.scss";
 import { addTaskActionCreator } from "../../redux/actions";
 import { Form } from "../../components/Form/Form.jsx";
 
@@ -29,15 +28,13 @@ export const CreateTaskPage = () => {
     }
 
     return (
-        <div className={styles.creationWrapper}>
-            <Form
-                titleText="Форма создания задачи"
-                onSubmit={event => dataSubmitHandler(event)}
-                titleValue={newDataTask.title}
-                contentValue={newDataTask.content}
-                onChangeTitle={event => setNewDataTask({ ...newDataTask, title: event.target.value })}
-                onChangeContent={event => setNewDataTask({ ...newDataTask, content: event.target.value })}
-            />
-        </div>
+        <Form
+            titleText="Форма создания задачи"
+            onSubmit={event => dataSubmitHandler(event)}
+            titleValue={newDataTask.title}
+            contentValue={newDataTask.content}
+            onChangeTitle={event => setNewDataTask({ ...newDataTask, title: event.target.value })}
+            onChangeContent={event => setNewDataTask({ ...newDataTask, content: event.target.value })}
+        />
     )
 }
