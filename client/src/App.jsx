@@ -5,7 +5,8 @@ import { TaskPage } from './Pages/TaskPage/TaskPage.jsx'
 import { TasksPage } from "./Pages/TasksPage/TasksPage.jsx"
 import { Layout } from './components/Layout/Layout.jsx'
 import { CreateTaskPage } from './Pages/CreateTaskPage/CreateTaskPage.jsx'
-import { SettingsPage } from './Pages/Settings/SettingsPage.jsx'
+import { SettingsPage } from './Pages/Settings/SettingsPage.jsx';
+import { EditPage } from './EditPage/EditPage.jsx';
 
 export const App = () => {
     return (
@@ -15,6 +16,7 @@ export const App = () => {
                     <Route index element={<TasksPage />} />
                     <Route path="create" element={<CreateTaskPage />} />
                     <Route path="settings" element={<SettingsPage />} />
+                    <Route path="edit/:id" element={<EditPage />} />
                 </Route>
             </Routes>
         </div>

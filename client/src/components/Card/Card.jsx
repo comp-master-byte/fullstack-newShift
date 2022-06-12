@@ -1,12 +1,14 @@
-import React, { Fragment, useState, useRef } from 'react'
-import styles from "./Card.module.scss"
-import { useDrag, useDrop } from 'react-dnd'
-import { Window } from '../../UI/Window/Window.jsx'
-import { ITEM_TYPE } from '../../data/types'
+import React, { Fragment, useState, useRef } from 'react';
+import styles from "./Card.module.scss";
+import { useDrag, useDrop } from 'react-dnd';
+import { useNavigate } from "react-router-dom";
+import { Window } from '../../UI/Window/Window.jsx';
+import { ITEM_TYPE } from '../../data/types';
 
 export const Card = (props) => {
 
     const { item, index, moveItem, status } = props;
+    const navigate = useNavigate();
 
     const ref = useRef(null);
 
@@ -48,6 +50,10 @@ export const Card = (props) => {
         })
     });
 
+    const editCardRoute = () => {
+        navigate(`/edit/${item.id}`)
+    };
+
     const [show, setShow] = useState(false);
 
     const onOpen = () => setShow(true);
@@ -62,17 +68,17 @@ export const Card = (props) => {
                 ref={ref}
                 style={{ opacity: isDragging ? 0 : 1 }}
                 className={styles.item}
-                onClick={onOpen}
+                onClick={editCardRoute}
             >
                 <div className={styles.colorBar} style={{ backgroundColor: status.color }} />
                 <p className={styles.itemTitle}>{item.content}</p>
                 <p className={styles.itemStatus}>{item.icon}</p>
             </div>
-            <Window
+            {/* <Window
                 item={item}
                 onClose={onClose}
                 show={show}
-            />
+            /> */}
         </Fragment>
     )
 }
