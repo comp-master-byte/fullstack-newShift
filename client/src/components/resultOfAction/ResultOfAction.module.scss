@@ -1,0 +1,13 @@
+.resultOfAction {
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #fff;
+    min-width: 25rem;
+
+    .resultOfAction__redirectText {
+        font-size: 1.125rem;
+        color: #000;
+        font-weight: 400;
+    }
+}

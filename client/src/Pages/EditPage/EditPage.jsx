@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import styles from "./EditPage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { AlertComponent } from "../../components/Alert/AlertComponent.jsx";
 import { Form } from "../../components/Form/Form.jsx";
 import { deleteTaskActionCreator, editTaskActionCreator, hideAlertActionCreator, hideErrorAlertActionCreator, hideSuccessAlertActionCreator, showAlertActionCreator, showErrorAlertActionCreator, showSuccessAlertActionCreator } from "../../redux/actions.js";
 import { ConfirmationModal } from "../../UI/ConfirmationModal/ConfirmationModal.jsx";
+import { ResultOfAction } from "../../components/resultOfAction/ResultOfAction.jsx";
 
 export const EditPage = () => {
 
@@ -17,11 +19,13 @@ export const EditPage = () => {
     const isShowSuccessAlert = useSelector(state => state.isShowAlert.successAlert);
     const isShowErrorAlert = useSelector(state => state.isShowAlert.errorAlert);
 
-
     const [newDataTask, setNewDataTask] = useState({ title: "", content: "" });
+    const [confirmText, setConfirmText] = useState("");
     const [isVisible, setIsVisible] = useState(false);
     const [isDeleteVisible, setIsDeleteVisible] = useState(false);
-    const [confirmText, setConfirmText] = useState("");
+    const [isDeleted, setIsDeleted] = useState(false);
+    const [isDisabled, setIsDisabled] = useState(false);
+    const [isEdited, setIsEdited] = useState(false);
 
     function dataSubmitHandler(event) {
 
@@ -35,18 +39,15 @@ export const EditPage = () => {
 
         if (!taskEdited.content || !taskEdited.title) {
             dispatch(showAlertActionCreator());
-            setTimeout(() => {
-                dispatch(hideAlertActionCreator());
-            }, 2000);
+            setTimeout(() => dispatch(hideAlertActionCreator()), 2000);
             return;
         }
 
         dispatch(editTaskActionCreator(taskEdited));
         dispatch(showErrorAlertActionCreator());
-        setTimeout(() => {
-            dispatch(hideErrorAlertActionCreator())
-        }, 2000)
+        setTimeout(() => dispatch(hideErrorAlertActionCreator()), 2000);
         setNewDataTask({ title: "", content: "" });
+        setIsEdited(true);
     }
 
     const closeEditModalHandler = () => setIsVisible(false);
@@ -70,6 +71,8 @@ export const EditPage = () => {
 
     const confirmDeleteSuccessActionHandler = () => {
         setIsDeleteVisible(false);
+        setIsDeleted(true);
+        setIsDisabled(true);
         dispatch(deleteTaskActionCreator(taskId));
         dispatch(showSuccessAlertActionCreator());
         setTimeout(() => dispatch(hideSuccessAlertActionCreator()), 3000);
@@ -95,11 +98,11 @@ export const EditPage = () => {
             }
 
             {isShowSuccessAlert &&
-                <AlertComponent variant={"success"} alertText={"Задача успешно удалена"} />
+                <AlertComponent variant={"success"} alertText={"Задача успешно удалена!"} />
             }
 
             {isShowErrorAlert &&
-                <AlertComponent variant={"success"} alertText={"Задача успешно изменена"} />
+                <AlertComponent variant={"success"} alertText={"Задача успешно изменена!"} />
             }
 
             <Form
@@ -112,6 +115,7 @@ export const EditPage = () => {
                 confirmEditAction={confirmEditActionHandler}
                 confirmDeleteAction={confirmDeleteActionHandler}
                 primaryBtnText={"Изменить"}
+                isDisabled={isDisabled}
                 editPageButtons
             />
 
@@ -132,6 +136,14 @@ export const EditPage = () => {
                 successClick={confirmDeleteSuccessActionHandler}
                 errorClick={confirmDeleteCloseModal}
             />
+
+            {isDeleted &&
+                <ResultOfAction goWhere="главную" to="/" resultText="Задача успешно удалена." />
+            }
+
+            {isEdited &&
+                <ResultOfAction goWhere="главную" to="/" resultText="Задача успешно изменена." />
+            }
         </div>
     )
 }

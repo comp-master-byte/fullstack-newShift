@@ -41,3 +41,11 @@
         box-shadow: 0 0 20px green;
     }
 }
+
+.shiftBtnDisabled {
+    background-color: #eee;
+
+    &:hover {
+        box-shadow: 0 0 20px #fff;
+    }
+}

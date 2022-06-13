@@ -2,7 +2,8 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addTaskActionCreator, hideAlertActionCreator, hideSuccessAlertActionCreator, showAlertActionCreator, showSuccessAlertActionCreator } from "../../redux/actions";
 import { Form } from "../../components/Form/Form.jsx";
-import { AlertComponent } from "../../components/Alert/AlertComponent.jsx"
+import { AlertComponent } from "../../components/Alert/AlertComponent.jsx";
+import { ResultOfAction } from "../../components/resultOfAction/ResultOfAction.jsx"
 
 export const CreateTaskPage = () => {
 
@@ -12,6 +13,7 @@ export const CreateTaskPage = () => {
     const isShowSuccessAlert = useSelector(state => state.isShowAlert.successAlert);
 
     const [newDataTask, setNewDataTask] = useState({ title: "", content: "" });
+    const [isAdded, setIsAdded] = useState(false);
 
     function dataSubmitHandler(event) {
         event.preventDefault();
@@ -33,6 +35,7 @@ export const CreateTaskPage = () => {
         dispatch(showSuccessAlertActionCreator());
         setTimeout(() => dispatch(hideSuccessAlertActionCreator()), 3000);
         setNewDataTask({ title: "", content: "" });
+        setIsAdded(true);
     }
 
     // ComponentWillUnmount
@@ -60,6 +63,9 @@ export const CreateTaskPage = () => {
                 onChangeContent={event => setNewDataTask({ ...newDataTask, content: event.target.value })}
                 primaryBtnText={"Добавить"}
             />
+            {isAdded &&
+                <ResultOfAction goWhere="главную" to="/" resultText="Задача успешно создана." />
+            }
         </Fragment>
     )
 }

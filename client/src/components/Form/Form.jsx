@@ -15,7 +15,8 @@ export const Form = (props) => {
         confirmEditAction,
         confirmDeleteAction,
         primaryBtnText,
-        editPageButtons
+        editPageButtons,
+        isDisabled
     } = props;
 
     return (
@@ -41,12 +42,12 @@ export const Form = (props) => {
                 <div className={styles.formSubmit__btn}>
                     {editPageButtons &&
                         <>
-                            <ShiftBtn onClick={confirmDeleteAction} btnText={"Удалить"} error />
-                            <ShiftBtn onClick={confirmEditAction} btnText={"Отменить"} warning />
+                            <ShiftBtn isDisabled={isDisabled} onClick={confirmDeleteAction} btnText={"Удалить"} error />
+                            <ShiftBtn isDisabled={isDisabled} onClick={confirmEditAction} btnText={"Отменить"} warning />
                         </>
                     }
 
-                    <ShiftBtn onClick={onSubmit} btnText={primaryBtnText} primary />
+                    <ShiftBtn isDisabled={isDisabled} onClick={onSubmit} btnText={primaryBtnText} primary />
                 </div>
             </div>
         </div>

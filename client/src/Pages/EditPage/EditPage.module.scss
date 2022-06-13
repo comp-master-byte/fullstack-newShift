@@ -1,0 +1,28 @@
+.deletedWrapper {
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #fff;
+    max-width: 25rem;
+
+    .confirmation__redirectText {
+        font-size: 1.125rem;
+        color: #000;
+        font-weight: 400;
+    }
+}
+
+
+.editedWrapper {
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #fff;
+    max-width: 40rem;
+
+    .editedWrapper__redirectText {
+        font-size: 1.125rem;
+        color: #000;
+        font-weight: 400;
+    }
+}
