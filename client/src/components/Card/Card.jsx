@@ -1,8 +1,10 @@
 import React, { Fragment, useState, useRef } from 'react';
 import styles from "./Card.module.scss";
+import cn from "classnames";
 import { useDrag, useDrop } from 'react-dnd';
 import { useNavigate } from "react-router-dom";
 import { ITEM_TYPE } from '../../data/types';
+import moment from "moment";
 
 export const Card = (props) => {
 
@@ -58,7 +60,9 @@ export const Card = (props) => {
             <div
                 ref={ref}
                 style={{ opacity: isDragging ? 0 : 1 }}
-                className={styles.item}
+                className={cn(styles.item, {
+                    [styles.overDeadline]: moment().isBefore(item.taskAssignedIn)
+                })}
                 onClick={editCardRoute}
             >
                 <div className={styles.colorBar} style={{ backgroundColor: status.color }} />

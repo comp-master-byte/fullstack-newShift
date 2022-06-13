@@ -21,7 +21,7 @@ export const EditPage = () => {
     const isShowErrorAlert = useSelector(state => state.isShowAlert.errorAlert);
 
     const [newDataTask, setNewDataTask] = useState({ title: "", content: "" });
-    const [selectedDate, setSelectedDate] = useState(new Date(moment()))
+    const [selectedDate, setSelectedDate] = useState(new Date(moment()));
     const [confirmText, setConfirmText] = useState("");
     const [isVisible, setIsVisible] = useState(false);
     const [isDeleteVisible, setIsDeleteVisible] = useState(false);
@@ -29,7 +29,7 @@ export const EditPage = () => {
     const [isDisabled, setIsDisabled] = useState(false);
     const [isEdited, setIsEdited] = useState(false);
 
-    const handleChange = newValue => setSelectedDate(newValue)
+    const handleChange = newValue => setSelectedDate(newValue);
 
     function dataSubmitHandler(event) {
 
@@ -39,7 +39,7 @@ export const EditPage = () => {
             id: taskId,
             title: newDataTask.title,
             content: newDataTask.content,
-            taskAssignedIn: moment(selectedDate).format("MM/DD/YY")
+            taskAssignedIn: moment(selectedDate).format("DD.MM.YY")
         };
 
         if (!taskEdited.content || !taskEdited.title) {

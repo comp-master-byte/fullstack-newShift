@@ -17,14 +17,14 @@ export const CreateTaskPage = () => {
     const [selectedDate, setSelectedDate] = useState(new Date(moment()))
     const [isAdded, setIsAdded] = useState(false);
 
-    const handleChange = newValue => setSelectedDate(newValue)
+    const handleChange = newValue => setSelectedDate(newValue);
 
     function dataSubmitHandler(event) {
         event.preventDefault();
 
         const newTaskCreated = {
             ...newDataTask,
-            taskAssignedIn: moment(selectedDate).format("MM/DD/YYYY"),
+            taskAssignedIn: moment(selectedDate).format("DD.MM.YYYY"),
             id: Date.now() + 1,
             status: "to do",
             icon: "⭕️"
@@ -41,7 +41,6 @@ export const CreateTaskPage = () => {
         setTimeout(() => dispatch(hideSuccessAlertActionCreator()), 3000);
         setNewDataTask({ title: "", content: "" });
         setIsAdded(true);
-        console.log(newTaskCreated);
     }
 
     // ComponentWillUnmount

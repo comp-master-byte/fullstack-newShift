@@ -14,7 +14,7 @@ export const ShiftDatePicker = (props) => {
             <Stack spacing={3}>
                 <DesktopDatePicker
                     label="Выберите дату"
-                    inputFormat="MM/dd/yyyy"
+                    inputFormat="dd.MM.yyyy"
                     value={selectedDate}
                     onChange={setSelectedDate}
                     renderInput={params => <TextField {...params} />}
