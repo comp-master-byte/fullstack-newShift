@@ -1,11 +1,16 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addTaskActionCreator } from "../../redux/actions";
+import React, { Fragment, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addTaskActionCreator, hideAlertActionCreator, hideSuccessAlertActionCreator, showAlertActionCreator, showSuccessAlertActionCreator } from "../../redux/actions";
 import { Form } from "../../components/Form/Form.jsx";
+import { AlertComponent } from "../../components/Alert/AlertComponent.jsx"
 
 export const CreateTaskPage = () => {
 
     const dispatch = useDispatch();
+
+    const isShowAlert = useSelector(state => state.isShowAlert.isShowAlert);
+    const isShowSuccessAlert = useSelector(state => state.isShowAlert.successAlert);
+
     const [newDataTask, setNewDataTask] = useState({ title: "", content: "" });
 
     function dataSubmitHandler(event) {
@@ -19,22 +24,42 @@ export const CreateTaskPage = () => {
         };
 
         if (!newTaskCreated.content || !newTaskCreated.title) {
-            return
+            dispatch(showAlertActionCreator());
+            setTimeout(() => dispatch(hideAlertActionCreator()), 3000);
+            return;
         };
 
         dispatch(addTaskActionCreator(newTaskCreated));
+        dispatch(showSuccessAlertActionCreator());
+        setTimeout(() => dispatch(hideSuccessAlertActionCreator()), 3000);
         setNewDataTask({ title: "", content: "" });
     }
 
+    // ComponentWillUnmount
+    useEffect(() => {
+        return () => dispatch(hideAlertActionCreator());
+    }, []);
+
+    useEffect(() => {
+        return () => dispatch(hideSuccessAlertActionCreator());
+    }, [])
+
     return (
-        <Form
-            titleText="Форма создания задачи"
-            onSubmit={event => dataSubmitHandler(event)}
-            titleValue={newDataTask.title}
-            contentValue={newDataTask.content}
-            onChangeTitle={event => setNewDataTask({ ...newDataTask, title: event.target.value })}
-            onChangeContent={event => setNewDataTask({ ...newDataTask, content: event.target.value })}
-            primaryBtnText={"Добавить"}
-        />
+        <Fragment>
+
+            {isShowSuccessAlert && <AlertComponent variant={"success"} alertText="Задача успешно создана!" />}
+
+            {isShowAlert && <AlertComponent variant={"error"} alertText="Поля ввода не могут быть пустыми!" />}
+
+            <Form
+                titleText="Форма создания задачи"
+                onSubmit={event => dataSubmitHandler(event)}
+                titleValue={newDataTask.title}
+                contentValue={newDataTask.content}
+                onChangeTitle={event => setNewDataTask({ ...newDataTask, title: event.target.value })}
+                onChangeContent={event => setNewDataTask({ ...newDataTask, content: event.target.value })}
+                primaryBtnText={"Добавить"}
+            />
+        </Fragment>
     )
 }
