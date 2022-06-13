@@ -5,11 +5,9 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 
-export const ShiftDatePicker = () => {
+export const ShiftDatePicker = (props) => {
 
-    const [selectedDate, setSelectedDate] = useState(new Date('2014-08-18T21:11:54'));
-
-    const handleChange = newValue => setSelectedDate(newValue);
+    const { selectedDate, setSelectedDate } = props;
 
     return (
         <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -18,7 +16,7 @@ export const ShiftDatePicker = () => {
                     label="Выберите дату"
                     inputFormat="MM/dd/yyyy"
                     value={selectedDate}
-                    onChange={handleChange}
+                    onChange={setSelectedDate}
                     renderInput={params => <TextField {...params} />}
                 />
             </Stack>

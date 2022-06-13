@@ -10,8 +10,10 @@ export const Form = (props) => {
         onSubmit,
         titleValue,
         contentValue,
+        dateValue,
         onChangeTitle,
         onChangeContent,
+        onChangeDate,
         titleText,
         confirmEditAction,
         confirmDeleteAction,
@@ -41,7 +43,10 @@ export const Form = (props) => {
                 />
 
                 <div className={styles.form__datepicker}>
-                    <ShiftDatePicker />
+                    <ShiftDatePicker
+                        selectedDate={dateValue}
+                        setSelectedDate={onChangeDate}
+                    />
                 </div>
 
                 <div className={styles.formSubmit__btn}>

@@ -22,8 +22,9 @@ export const addTaskReducer = (state = initialState, action) => {
                 ...state, 
                 data: state.data.map(item => {
                     if(item.id === parseInt(action.payload.id)) {
-                        item.title = action.payload.title ,
-                        item.content = action.payload.content;
+                        item.title = action.payload.title,
+                        item.content = action.payload.content,
+                        item.taskAssignedIn = action.payload.taskAssignedIn
                     };
                     return item;
                 })

@@ -7,6 +7,7 @@ import { Form } from "../../components/Form/Form.jsx";
 import { deleteTaskActionCreator, editTaskActionCreator, hideAlertActionCreator, hideErrorAlertActionCreator, hideSuccessAlertActionCreator, showAlertActionCreator, showErrorAlertActionCreator, showSuccessAlertActionCreator } from "../../redux/actions.js";
 import { ConfirmationModal } from "../../UI/ConfirmationModal/ConfirmationModal.jsx";
 import { ResultOfAction } from "../../components/resultOfAction/ResultOfAction.jsx";
+import moment from "moment";
 
 export const EditPage = () => {
 
@@ -20,12 +21,15 @@ export const EditPage = () => {
     const isShowErrorAlert = useSelector(state => state.isShowAlert.errorAlert);
 
     const [newDataTask, setNewDataTask] = useState({ title: "", content: "" });
+    const [selectedDate, setSelectedDate] = useState(new Date(moment()))
     const [confirmText, setConfirmText] = useState("");
     const [isVisible, setIsVisible] = useState(false);
     const [isDeleteVisible, setIsDeleteVisible] = useState(false);
     const [isDeleted, setIsDeleted] = useState(false);
     const [isDisabled, setIsDisabled] = useState(false);
     const [isEdited, setIsEdited] = useState(false);
+
+    const handleChange = newValue => setSelectedDate(newValue)
 
     function dataSubmitHandler(event) {
 
@@ -34,7 +38,8 @@ export const EditPage = () => {
         const taskEdited = {
             id: taskId,
             title: newDataTask.title,
-            content: newDataTask.content
+            content: newDataTask.content,
+            taskAssignedIn: moment(selectedDate).format("MM/DD/YY")
         };
 
         if (!taskEdited.content || !taskEdited.title) {
@@ -110,8 +115,10 @@ export const EditPage = () => {
                 onSubmit={dataSubmitHandler}
                 titleValue={newDataTask.title}
                 contentValue={newDataTask.content}
+                dateValue={selectedDate}
                 onChangeTitle={event => setNewDataTask({ ...newDataTask, title: event.target.value })}
                 onChangeContent={event => setNewDataTask({ ...newDataTask, content: event.target.value })}
+                onChangeDate={handleChange}
                 confirmEditAction={confirmEditActionHandler}
                 confirmDeleteAction={confirmDeleteActionHandler}
                 primaryBtnText={"Изменить"}

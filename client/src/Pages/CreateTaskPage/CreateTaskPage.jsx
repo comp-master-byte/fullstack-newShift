@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { addTaskActionCreator, hideAlertActionCreator, hideSuccessAlertActionCreator, showAlertActionCreator, showSuccessAlertActionCreator } from "../../redux/actions";
 import { Form } from "../../components/Form/Form.jsx";
 import { AlertComponent } from "../../components/Alert/AlertComponent.jsx";
-import { ResultOfAction } from "../../components/resultOfAction/ResultOfAction.jsx"
+import { ResultOfAction } from "../../components/resultOfAction/ResultOfAction.jsx";
+import moment from "moment";
 
 export const CreateTaskPage = () => {
 
@@ -13,13 +14,17 @@ export const CreateTaskPage = () => {
     const isShowSuccessAlert = useSelector(state => state.isShowAlert.successAlert);
 
     const [newDataTask, setNewDataTask] = useState({ title: "", content: "" });
+    const [selectedDate, setSelectedDate] = useState(new Date(moment()))
     const [isAdded, setIsAdded] = useState(false);
+
+    const handleChange = newValue => setSelectedDate(newValue)
 
     function dataSubmitHandler(event) {
         event.preventDefault();
 
         const newTaskCreated = {
             ...newDataTask,
+            taskAssignedIn: moment(selectedDate).format("MM/DD/YYYY"),
             id: Date.now() + 1,
             status: "to do",
             icon: "⭕️"
@@ -36,6 +41,7 @@ export const CreateTaskPage = () => {
         setTimeout(() => dispatch(hideSuccessAlertActionCreator()), 3000);
         setNewDataTask({ title: "", content: "" });
         setIsAdded(true);
+        console.log(newTaskCreated);
     }
 
     // ComponentWillUnmount
@@ -59,8 +65,10 @@ export const CreateTaskPage = () => {
                 onSubmit={event => dataSubmitHandler(event)}
                 titleValue={newDataTask.title}
                 contentValue={newDataTask.content}
+                dateValue={selectedDate}
                 onChangeTitle={event => setNewDataTask({ ...newDataTask, title: event.target.value })}
                 onChangeContent={event => setNewDataTask({ ...newDataTask, content: event.target.value })}
+                onChangeDate={handleChange}
                 primaryBtnText={"Добавить"}
             />
             {isAdded &&
