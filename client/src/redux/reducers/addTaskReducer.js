@@ -9,7 +9,6 @@ const initialState = {
             title: "Human Interest Form",
             content: "Fill out human interest distribution form",
             taskAssignedIn:"13.06.2022",
-            taskFinishedIn:"15.06.2022"
         }
     ]
 };

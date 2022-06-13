@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import styles from "./Form.module.scss";
 import { ShiftInput } from "../../UI/ShiftInput/ShiftInput.jsx";
 import { ShiftBtn } from "../../UI/ShiftBtn/ShiftBtn.jsx";
+import { ShiftDatePicker } from "../ShiftDatePicker/ShiftDatePicker.jsx";
 
 export const Form = (props) => {
 
@@ -38,6 +39,10 @@ export const Form = (props) => {
                     placeholder="Описание"
                     className={styles.form__input}
                 />
+
+                <div className={styles.form__datepicker}>
+                    <ShiftDatePicker />
+                </div>
 
                 <div className={styles.formSubmit__btn}>
                     {editPageButtons &&

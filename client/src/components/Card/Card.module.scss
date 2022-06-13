@@ -35,15 +35,3 @@
     justify-content: space-between;
     margin-top: 1rem;
 }
-
-.itemDeadline {
-    display: flex;
-    align-items: center;
-
-    .middleBorder {
-        width: 10px;
-        height: 1px;
-        background-color: #000;
-        margin: 0 4px;
-    }
-}

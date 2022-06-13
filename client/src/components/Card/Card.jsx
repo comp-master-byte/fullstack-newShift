@@ -65,11 +65,7 @@ export const Card = (props) => {
                 <div className={styles.itemTitle}>{item.title}</div>
                 <div className={styles.itemContent}>{item.content}</div>
                 <div className={styles.itemFooter}>
-                    <div className={styles.itemDeadline}>
-                        <div>{item.taskAssignedIn}</div>
-                        <div className={styles.middleBorder} />
-                        <div>{item.taskFinishedIn}</div>
-                    </div>
+                    <div className={styles.itemDeadline}>{item.taskAssignedIn}</div>
                     <div className={styles.itemStatus}>{item.icon}</div>
                 </div>
             </div>
