@@ -48,7 +48,8 @@ export const TasksPage = () => {
                                         {
                                             items
                                                 .filter(i => i.status === s.status)
-                                                .map((i, idx) => <Card key={i.id} item={i} index={idx} moveItem={moveItem} status={s} />)
+                                                .map((i, idx) =>
+                                                    <Card key={i.id} item={i} index={idx} moveItem={moveItem} status={s} />)
                                         }
 
                                     </Board>

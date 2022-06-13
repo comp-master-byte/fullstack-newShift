@@ -1,27 +1,49 @@
 .item {
-    font-size: 15px;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 5px;
+    font-size: .9375rem;
+    margin-bottom: .625rem;
+    padding: .625rem;
+    border-radius: .3125rem;
     z-index: 1;
     background-color: white;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
-.item:hover {
-    cursor: pointer;
-}
 
 .colorBar {
-    width: 40px;
-    height: 10px;
+    width: 2.5rem;
+    height: .625rem;
     border-radius: 5px;
 }
 
 .itemTitle {
+    font-size: 1.125rem;
     font-weight: 600;
-    font-size: 16px;
+    margin-top: .5rem;
 }
 
-.itemStatus {
-    text-align: right;
+.itemContent {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: .5rem;
+}
+
+.itemFooter {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.itemDeadline {
+    display: flex;
+    align-items: center;
+
+    .middleBorder {
+        width: 10px;
+        height: 1px;
+        background-color: #000;
+        margin: 0 4px;
+    }
 }

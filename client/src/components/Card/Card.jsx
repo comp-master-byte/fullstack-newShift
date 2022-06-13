@@ -2,7 +2,6 @@ import React, { Fragment, useState, useRef } from 'react';
 import styles from "./Card.module.scss";
 import { useDrag, useDrop } from 'react-dnd';
 import { useNavigate } from "react-router-dom";
-import { Window } from '../../UI/Window/Window.jsx';
 import { ITEM_TYPE } from '../../data/types';
 
 export const Card = (props) => {
@@ -16,13 +15,13 @@ export const Card = (props) => {
         accept: ITEM_TYPE,
         hover(item, monitor) {
             if (!ref.current) {
-                return
+                return;
             }
             const dragIndex = item.index;
             const hoverIndex = index;
 
             if (dragIndex === hoverIndex) {
-                return
+                return;
             }
 
             const hoveredRect = ref.current.getBoundingClientRect();
@@ -50,15 +49,7 @@ export const Card = (props) => {
         })
     });
 
-    const editCardRoute = () => {
-        navigate(`/edit/${item.id}`)
-    };
-
-    const [show, setShow] = useState(false);
-
-    const onOpen = () => setShow(true);
-
-    const onClose = () => setShow(false);
+    const editCardRoute = () => navigate(`/edit/${item.id}`);
 
     drag(drop(ref));
 
@@ -71,14 +62,17 @@ export const Card = (props) => {
                 onClick={editCardRoute}
             >
                 <div className={styles.colorBar} style={{ backgroundColor: status.color }} />
-                <p className={styles.itemTitle}>{item.content}</p>
-                <p className={styles.itemStatus}>{item.icon}</p>
+                <div className={styles.itemTitle}>{item.title}</div>
+                <div className={styles.itemContent}>{item.content}</div>
+                <div className={styles.itemFooter}>
+                    <div className={styles.itemDeadline}>
+                        <div>{item.taskAssignedIn}</div>
+                        <div className={styles.middleBorder} />
+                        <div>{item.taskFinishedIn}</div>
+                    </div>
+                    <div className={styles.itemStatus}>{item.icon}</div>
+                </div>
             </div>
-            {/* <Window
-                item={item}
-                onClose={onClose}
-                show={show}
-            /> */}
         </Fragment>
     )
 }
