@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import styles from "./TasksPage.module.scss"
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import styles from "./TasksPage.module.scss";
 import { Card } from "../../components/Card/Card.jsx"
 import { Board } from "../../components/Board/Board.jsx"
 import { DropWrapper } from "../../components/DropWrapper/DropWrapper.jsx"
-import { statuses } from '../../data/index.js'
+import { statuses } from '../../data/index.js';
+import { ResultOfAction } from "../../components/resultOfAction/ResultOfAction.jsx"
 
 export const TasksPage = () => {
 
@@ -34,21 +35,29 @@ export const TasksPage = () => {
 
     return (
         <div className={styles.row}>
-            {statuses.map(s => {
-                return (
-                    <div key={s.status} className={styles.colWrapper}>
-                        <h2 className={styles.colHeader}>{s.status.toUpperCase()}</h2>
-                        <DropWrapper onDrop={onDrop} status={s.status}>
-                            <Board>
-                                {items
-                                    .filter(i => i.status === s.status)
-                                    .map((i, idx) => <Card key={i.id} item={i} index={idx} moveItem={moveItem} status={s} />)
-                                }
-                            </Board>
-                        </DropWrapper>
-                    </div>
-                );
-            })}
+            {
+                !items.length ?
+                    <ResultOfAction resultText="Задачи отсутствуют." to="/create" goWhere="создание" />
+                    :
+                    statuses.map(s => {
+                        return (
+                            <div key={s.status} className={styles.colWrapper}>
+                                <h2 className={styles.colHeader}>{s.status.toUpperCase()}</h2>
+                                <DropWrapper onDrop={onDrop} status={s.status}>
+                                    <Board>
+                                        {
+                                            items
+                                                .filter(i => i.status === s.status)
+                                                .map((i, idx) => <Card key={i.id} item={i} index={idx} moveItem={moveItem} status={s} />)
+                                        }
+
+                                    </Board>
+                                </DropWrapper>
+                            </div>
+                        );
+                    })
+            }
+
         </div>
     )
 }
