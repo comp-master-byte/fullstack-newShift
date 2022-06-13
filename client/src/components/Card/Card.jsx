@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { ITEM_TYPE } from '../../data/types';
 import moment from "moment";
 
+const CURRENT_DATE = moment().format("DD.MM.YYYY")
+
 export const Card = (props) => {
 
     const { item, index, moveItem, status } = props;
@@ -48,12 +50,14 @@ export const Card = (props) => {
         type: ITEM_TYPE,
         collect: monitor => ({
             isDragging: monitor.isDragging()
-        })
+        }),
+        canDrag: item.status === "done" ? false : true
     });
 
     const editCardRoute = () => navigate(`/edit/${item.id}`);
 
     drag(drop(ref));
+
 
     return (
         <Fragment>
@@ -61,7 +65,7 @@ export const Card = (props) => {
                 ref={ref}
                 style={{ opacity: isDragging ? 0 : 1 }}
                 className={cn(styles.item, {
-                    [styles.overDeadline]: moment().isBefore(item.taskAssignedIn)
+                    [styles.overDeadline]: CURRENT_DATE >= item.taskAssignedIn
                 })}
                 onClick={editCardRoute}
             >

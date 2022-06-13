@@ -4,7 +4,10 @@ import { useDrop } from "react-dnd";
 import { ITEM_TYPE } from "../../data/types"
 import { statuses } from "../../data";
 
-export const DropWrapper = ({ onDrop, children, status }) => {
+export const DropWrapper = (props) => {
+
+    const { onDrop, children, status } = props;
+
     const [{ isOver }, drop] = useDrop({
         accept: ITEM_TYPE,
         canDrop: (item, monitor) => {
@@ -17,7 +20,7 @@ export const DropWrapper = ({ onDrop, children, status }) => {
         },
         collect: monitor => ({
             isOver: monitor.isOver()
-        })
+        }),
     });
 
     return (

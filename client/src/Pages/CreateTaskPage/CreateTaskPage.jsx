@@ -50,7 +50,7 @@ export const CreateTaskPage = () => {
 
     useEffect(() => {
         return () => dispatch(hideSuccessAlertActionCreator());
-    }, [])
+    }, []);
 
     return (
         <Fragment>
