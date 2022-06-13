@@ -1,0 +1,31 @@
+.alertWrapper {
+    position: fixed;
+    top: -40%;
+    left: 50%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #fff;
+    min-width: 2rem;
+    min-height: 2rem;
+    padding: 1rem 2rem;
+}
+
+.alertSuccess {
+    background-color: green;
+    color: #fff;
+}
+
+.alertDanger {
+    background-color: orange;
+    color: #fff;
+}
+
+.alertError {
+    background-color: red;
+    color: #fff;
+}
+
+.alertWrapper__text {
+    font-size: 1rem;
+    font-weight: 500;
+}

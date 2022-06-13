@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
+import { AlertComponent } from "../../components/Alert/AlertComponent.jsx";
 import { Form } from "../../components/Form/Form.jsx";
-import { deleteTaskActionCreator, editTaskActionCreator } from "../../redux/actions.js";
+import { deleteTaskActionCreator, editTaskActionCreator, hideAlertActionCreator, showAlertActionCreator } from "../../redux/actions.js";
 import { ConfirmationModal } from "../../UI/ConfirmationModal/ConfirmationModal.jsx";
+import { Alert } from "react-bs-notifier"
 
 export const EditPage = () => {
 
@@ -11,6 +13,7 @@ export const EditPage = () => {
     const navigate = useNavigate();
 
     const dispatch = useDispatch();
+    const isShowAlert = useSelector(state => state.isShowAlert.isShowAlert);
 
     const [newDataTask, setNewDataTask] = useState({ title: "", content: "" });
     const [isVisible, setIsVisible] = useState(false)
@@ -28,8 +31,13 @@ export const EditPage = () => {
         };
 
         if (!taskEdited.content || !taskEdited.title) {
+            dispatch(showAlertActionCreator());
+            setTimeout(() => {
+                dispatch(hideAlertActionCreator())
+            }, 4000);
             return;
-        };
+        }
+
 
         dispatch(editTaskActionCreator(taskEdited));
         setNewDataTask({ title: "", content: "" });
@@ -64,6 +72,11 @@ export const EditPage = () => {
 
     return (
         <div>
+
+            {isShowAlert &&
+                <AlertComponent variant={"danger"} alertText={"Ой, вы не заполнили поля для изменения задачи!!!"} />
+            }
+
             <Form
                 titleText={"Страница редактирования задачи"}
                 onSubmit={dataSubmitHandler}

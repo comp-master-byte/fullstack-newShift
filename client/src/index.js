@@ -5,7 +5,7 @@ import { Provider }  from "react-redux"
 import { BrowserRouter } from "react-router-dom"
 import { store } from "./redux/rootReducer.js"
 import { DndProvider } from "react-dnd"
-import {HTML5Backend} from "react-dnd-html5-backend"
+import {HTML5Backend} from "react-dnd-html5-backend";
 
 const root = ReactDom.createRoot(document.querySelector("#root"))
 root.render(
