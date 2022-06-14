@@ -10,13 +10,12 @@ import { useEffect } from 'react';
 const CURRENT_DATE = moment().format("DD.MM.YYYY");
 const MAX_CONTENT_LENGTH = 140;
 
-
 export const Card = (props) => {
 
     const { item, index, moveItem, status } = props;
 
     let slicedContent = item.content.split(" ").slice(0, MAX_CONTENT_LENGTH).join(" ");
-    let ifEquilToMax = slicedContent.split(" ").length === 140 ? slicedContent + "..." : slicedContent
+    let ifEquilToMax = slicedContent.split(" ").length === 140 ? slicedContent + "..." : slicedContent;
 
     const navigate = useNavigate();
 

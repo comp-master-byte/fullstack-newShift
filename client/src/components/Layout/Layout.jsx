@@ -19,15 +19,8 @@ export const Layout = () => {
             </div>
 
             <div className={styles.container}>
-                <div className={isOpenMenu ? (styles.contentBlock && styles.active) : styles.contentBlock}>
-                    <div className={styles.isMenuOpen}>
-                        <div onClick={openMenubarHandler} className={styles.isMenuOpen__btn}>
-                            {isOpenMenu ? <IoEnterOutline style={{ transform: "rotate(180deg)" }} size='20' /> : <ImExit size='20' />}
-                        </div>
-                        <div className={styles.navigationMain}>
-                            <Navigation />
-                        </div>
-                    </div>
+                <div className={styles.layout}>
+                    <Navigation />
                     <div className={styles.contentMain}>
                         <Outlet />
                     </div>

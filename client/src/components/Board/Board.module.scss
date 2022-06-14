@@ -1,9 +1,12 @@
 .highlightRegion {
-    background-color: yellow;
+    background-color: #d1ffff;
 }
 
 .col {
-    min-height: 300px;
-    max-width: 300px;
-    width: 300px;
+    min-height: 20rem;
+    max-width: 20rem;
+    width: 20rem;
+    box-shadow: 0 0 10px #000;
+    border-radius: 8px;
+    padding: 1rem;
 }

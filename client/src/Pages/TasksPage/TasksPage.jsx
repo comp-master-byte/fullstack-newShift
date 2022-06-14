@@ -42,7 +42,7 @@ export const TasksPage = () => {
                     statuses.map(s => {
                         return (
                             <div key={s.status} className={styles.colWrapper}>
-                                <h2 className={styles.colHeader}>{s.status.toUpperCase()}</h2>
+                                <div className={styles.colHeader}>{s.status.toUpperCase()}</div>
                                 <DropWrapper onDrop={onDrop} status={s.status}>
                                     <Board>
                                         {

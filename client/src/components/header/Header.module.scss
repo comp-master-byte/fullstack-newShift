@@ -5,7 +5,13 @@
 
 .headerRow {
     padding-bottom: 1rem;
-    border-bottom: 1px solid #000;
+    display: flex;
+    align-items: baseline;
+
+    .headerRow__logo {
+        margin-right: .5rem;
+        color: rgb(79, 135, 150);
+    }
 
     .headerRow__title {
         font-size: 2rem;
