@@ -4,7 +4,7 @@
   "description": "Client part",
   "main": "index.js",
   "scripts": {
-    "build": "CI=false && webpack",
+    "build": "webpack",
     "dev": "webpack serve"
   },
   "keywords": [
