@@ -8,7 +8,7 @@ const plugins = [
     new HtmlWebpackPlugin({
         title: "Client part",
         template: "./public/index.html", 
-        path: path.resolve(__dirname, "dist")
+        path: path.resolve(__dirname, "build")
     }),
     new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin(),
@@ -22,11 +22,11 @@ module.exports = {
     entry: "./src/index.js",
     plugins,
     output: {
-        path: path.resolve(__dirname, "dist"),
+        path: path.resolve(__dirname, "build"),
         filename: "[name].bundle.js"
     },
     devServer: {
-        static: path.resolve(__dirname, "dist"),
+        static: path.resolve(__dirname, "build"),
         open: true,
         // clientLogLevel: "silent"
         port: 9000,
