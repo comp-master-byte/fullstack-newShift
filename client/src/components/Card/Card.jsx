@@ -1,16 +1,22 @@
-import React, { Fragment, useState, useRef } from 'react';
+import React, { Fragment, useRef } from 'react';
 import styles from "./Card.module.scss";
 import cn from "classnames";
 import { useDrag, useDrop } from 'react-dnd';
 import { useNavigate } from "react-router-dom";
 import { ITEM_TYPE } from '../../data/types';
 import moment from "moment";
+import { useEffect } from 'react';
 
-const CURRENT_DATE = moment().format("DD.MM.YYYY")
+const CURRENT_DATE = moment().format("DD.MM.YYYY");
+const MAX_CONTENT_LENGTH = 140;
+
 
 export const Card = (props) => {
 
     const { item, index, moveItem, status } = props;
+
+    const slicedContent = item.content.split(" ").slice(0, MAX_CONTENT_LENGTH).join(" ");
+
     const navigate = useNavigate();
 
     const ref = useRef(null);
@@ -58,6 +64,9 @@ export const Card = (props) => {
 
     drag(drop(ref));
 
+    useEffect(() => {
+
+    }, [])
 
     return (
         <Fragment>
@@ -71,7 +80,7 @@ export const Card = (props) => {
             >
                 <div className={styles.colorBar} style={{ backgroundColor: status.color }} />
                 <div className={styles.itemTitle}>{item.title}</div>
-                <div className={styles.itemContent}>{item.content}</div>
+                <div className={styles.itemContent}>{slicedContent}</div>
                 <div className={styles.itemFooter}>
                     <div className={styles.itemDeadline}>{item.taskAssignedIn}</div>
                     <div className={styles.itemStatus}>{item.icon}</div>
