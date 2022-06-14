@@ -2,9 +2,13 @@ import React, { Fragment, useState } from "react";
 import styles from "./Header.module.scss";
 import { ImTrello } from "react-icons/im";
 import { GrReactjs } from "react-icons/gr";
-import { AlertComponent } from "../Alert/AlertComponent.jsx"
+import { AiOutlineMenuFold } from "react-icons/ai";
+import { AlertComponent } from "../Alert/AlertComponent.jsx";
+import { ShiftPrompt } from "../../UI/Prompt/ShiftPrompt.jsx";
 
-export const Header = () => {
+export const Header = (props) => {
+
+    const { showNavigation, toggle } = props;
 
     const [showPrompt, setShowPrompt] = useState(false);
 
@@ -27,11 +31,19 @@ export const Header = () => {
                             Task Desk
                         </div>
                     </div>
-                    <div onClick={togglePrompt} className={styles.headerPrompt}>
-                        <GrReactjs size="20" />
-                        <div className={styles.headerPrompt__title}>
-                            Подсказка
-                        </div>
+                    <div className={styles.headerPrompts}>
+                        {!showNavigation &&
+                            <ShiftPrompt
+                                icon={<AiOutlineMenuFold size="20" />}
+                                onClick={toggle}
+                                promptText="Открыть меню"
+                            />
+                        }
+                        <ShiftPrompt
+                            promptText="Подсказка"
+                            icon={<GrReactjs size="20" />}
+                            onClick={togglePrompt}
+                        />
                     </div>
                 </div>
             </div>

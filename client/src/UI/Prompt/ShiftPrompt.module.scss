@@ -1,0 +1,20 @@
+.shiftPrompt {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: .75rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: .25s;
+
+    .shiftPrompt__title {
+        font-size: 1rem;
+        color: #000;
+        font-weight: 400;
+        margin-left: .5rem;
+    }
+
+    &:hover {
+        box-shadow: 0 0 10px #fff;
+    }
+}

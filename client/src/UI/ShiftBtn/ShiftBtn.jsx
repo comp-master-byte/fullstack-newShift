@@ -12,6 +12,7 @@ export const ShiftBtn = (props) => {
         success,
         onClick,
         isDisabled,
+        icon,
         ...rest
     } = props;
 

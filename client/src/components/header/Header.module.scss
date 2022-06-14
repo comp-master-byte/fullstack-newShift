@@ -5,7 +5,7 @@
 
 .headerRow {
     display: flex;
-    // align-items: center;
+    align-items: center;
     justify-content: space-between;
 }
 
@@ -26,27 +26,6 @@
     }
 }
 
-.headerPrompt {
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 0 1.5rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    transition: .25s;
-
-    .headerPrompt__title {
-        font-size: 1rem;
-        color: #000;
-        font-weight: 400;
-        margin-left: .5rem;
-    }
-
-    &:hover {
-        box-shadow: 0 0 10px #fff;
-    }
-}
-
 .headerAlertHide {
     opacity: 0;
     transition: .5s;
@@ -55,4 +34,9 @@
 .headerAlertShow {
     opacity: 1;
     transition: .5s;
+}
+
+.headerPrompts {
+    display: flex;
+    gap: .5rem;
 }

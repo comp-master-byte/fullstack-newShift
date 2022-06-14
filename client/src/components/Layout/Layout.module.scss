@@ -10,8 +10,30 @@
     margin-top: 1rem;
 }
 
+.hideNavigation {
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: .5s;
+}
+
+.showNavigation {
+    transform: translateX(0%);
+    opacity: 1;
+    transition: .5s;
+}
+
+.firstContentMain {
+    margin-left: 4rem;
+}
+
 .contentMain {
-    margin-left: 3rem;
+    transform: translateX(-19%);
+    transition: .5s;
+}
+
+.moveOnRightMenu {
+    transform: translateX(7%);
+    transition: .5s;
 }
 
 .isMenuOpen__btn {

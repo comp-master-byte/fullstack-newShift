@@ -1,17 +1,22 @@
 .shiftBtn {
     padding: 10px 40px;
     cursor: pointer;
-    color: #fff;
     border: none;
     outline: none;
     font-size: 16px;
     border-radius: 12px;
     transition: .25s;
+    background-color: #fff;
+    color: #000;
 
+    &:hover {
+        box-shadow: 0 0 20px #fff;
+    }
 }
 
 .shiftBtnPrimary {
     background-color: #026AA7;
+    color: #fff;
 
     &:hover {
         box-shadow: 0 0 20px #026AA7;
@@ -20,6 +25,7 @@
 
 .shiftBtnError {
     background-color: #C41E3A;
+    color: #fff;
 
     &:hover {
         box-shadow: 0 0 20px #C41E3A;
@@ -28,6 +34,7 @@
 
 .shiftBtnWarning {
     background-color: #f05408;
+    color: #fff;
 
     &:hover {
         box-shadow: 0 0 20px #f05408;
@@ -36,6 +43,7 @@
 
 .shiftBtnSuccess {
     background-color: green;
+    color: #fff;
 
     &:hover {
         box-shadow: 0 0 20px green;

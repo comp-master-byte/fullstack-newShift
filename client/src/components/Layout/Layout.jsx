@@ -1,32 +1,34 @@
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import styles from "./Layout.module.scss"
 import { Outlet } from 'react-router-dom'
 import { Header } from '../header/Header.jsx'
-import { Navigation } from "../Navigation/Navigation.jsx"
-import { IoEnterOutline } from "react-icons/io5"
-import { ImExit } from "react-icons/im"
+import { Navigation } from "../Navigation/Navigation.jsx";
+import { ShiftBtn } from "../../UI/ShiftBtn/ShiftBtn.jsx"
 
 export const Layout = () => {
 
-    const [isOpenMenu, setIsOpenMenu] = useState(false)
+    const [showNavigation, setShowNavigation] = useState(false)
 
-    const openMenubarHandler = () => setIsOpenMenu(prev => !prev)
+    const toggleNavigation = () => setShowNavigation(prev => !prev)
 
     return (
-        <>
+        <Fragment>
             <div className={styles.container}>
-                <Header />
+                <Header showNavigation={showNavigation} toggle={toggleNavigation} />
             </div>
 
             <div className={styles.container}>
                 <div className={styles.layout}>
-                    <Navigation />
-                    <div className={styles.contentMain}>
+                    <div className={showNavigation ? styles.showNavigation : styles.hideNavigation}>
+                        <Navigation onClose={toggleNavigation} />
+                    </div>
+                    <div className={styles.firstContentMain}>
                         <Outlet />
                     </div>
+
                 </div>
             </div>
 
-        </>
+        </Fragment>
     )
 }

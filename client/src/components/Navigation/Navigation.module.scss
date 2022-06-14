@@ -1,10 +1,24 @@
 .navigation {
     background-color: #fff;
     box-shadow: 0 0 2px #000;
-    // margin: 1rem;
     padding: .5rem;
     border-radius: 8px;
     transition: .5s;
+    position: relative;
+    z-index: 3;
+}
+
+.navigationToggle {
+    position: absolute;
+    top: .5rem;
+    right: -2.1rem;
+    background-color: #026AA7;
+    padding: .75rem .1rem;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 2;
 }
 
 .navigationList {
