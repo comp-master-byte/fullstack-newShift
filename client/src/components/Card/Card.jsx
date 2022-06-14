@@ -5,7 +5,6 @@ import { useDrag, useDrop } from 'react-dnd';
 import { useNavigate } from "react-router-dom";
 import { ITEM_TYPE } from '../../data/types';
 import moment from "moment";
-import { useEffect } from 'react';
 
 const CURRENT_DATE = moment().format("DD.MM.YYYY");
 const MAX_CONTENT_LENGTH = 140;
@@ -57,16 +56,12 @@ export const Card = (props) => {
         collect: monitor => ({
             isDragging: monitor.isDragging()
         }),
-        canDrag: item.status === "done" ? false : true
+        canDrag: item.status === "done" ? false : true,
     });
 
     const editCardRoute = () => navigate(`/edit/${item.id}`);
 
     drag(drop(ref));
-
-    useEffect(() => {
-
-    }, [])
 
     return (
         <Fragment>

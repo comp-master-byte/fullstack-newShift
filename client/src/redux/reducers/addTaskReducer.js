@@ -1,16 +1,7 @@
-import { ADD_TASK, DELETE_TASK, EDIT_TASK } from "../types";
+import { ADD_TASK, DELETE_TASK, EDIT_STATUS_ON_DROP, EDIT_TASK } from "../types";
 
 const initialState = {
-    data: [
-        {
-            id: 1,
-            icon: "⭕️",
-            status: "to do",
-            title: "Human Interest Form",
-            content: "Fill out human interest distribution form",
-            taskAssignedIn:"13.06.2022",
-        }
-    ]
+    data: []
 };
 
 export const addTaskReducer = (state = initialState, action) => {
@@ -30,7 +21,16 @@ export const addTaskReducer = (state = initialState, action) => {
                 })
             };
         case DELETE_TASK:
-            return {...state, data: state.data.filter(item => item.id !== parseInt(action.payload))}
+            return {...state, data: state.data.filter(item => item.id !== parseInt(action.payload))};
+        case EDIT_STATUS_ON_DROP:
+            return {...state, 
+                data: state.data.map(item => {
+                    if(item.id === parseInt(action.payload.id)) {
+                        item.status = action.payload.status
+                    }
+                    return item;
+                })
+            }
         default:
             return state;
     };

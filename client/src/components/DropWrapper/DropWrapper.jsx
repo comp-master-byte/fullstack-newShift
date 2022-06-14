@@ -1,12 +1,16 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import styles from "./DropWrapper.module.scss"
 import { useDrop } from "react-dnd";
 import { ITEM_TYPE } from "../../data/types"
 import { statuses } from "../../data";
+import { editStatusActionCreator } from "../../redux/actions";
 
 export const DropWrapper = (props) => {
 
     const { onDrop, children, status } = props;
+
+    const dispatch = useDispatch()
 
     const [{ isOver }, drop] = useDrop({
         accept: ITEM_TYPE,
@@ -17,6 +21,11 @@ export const DropWrapper = (props) => {
         },
         drop: (item, monitor) => {
             onDrop(item, monitor, status);
+            const updatedStatus = {
+                id: item.id,
+                status
+            }
+            dispatch(editStatusActionCreator(updatedStatus))
         },
         collect: monitor => ({
             isOver: monitor.isOver()
