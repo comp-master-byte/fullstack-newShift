@@ -11,26 +11,26 @@
 }
 
 .shiftBtnPrimary {
-    background-color: #4169E1;
+    background-color: #026AA7;
 
     &:hover {
-        box-shadow: 0 0 20px #4169E1;
+        box-shadow: 0 0 20px #026AA7;
     }
 }
 
 .shiftBtnError {
-    background-color: red;
+    background-color: #C41E3A;
 
     &:hover {
-        box-shadow: 0 0 20px red;
+        box-shadow: 0 0 20px #C41E3A;
     }
 }
 
 .shiftBtnWarning {
-    background-color: orange;
+    background-color: #f05408;
 
     &:hover {
-        box-shadow: 0 0 20px orange;
+        box-shadow: 0 0 20px #f05408;
     }
 }
 
