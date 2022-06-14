@@ -2,6 +2,7 @@ const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const webpack = require("webpack")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const { SourceMapDevToolPlugin } = require("webpack");
 
 const plugins = [
     new HtmlWebpackPlugin({
@@ -10,7 +11,10 @@ const plugins = [
         path: path.resolve(__dirname, "dist")
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new MiniCssExtractPlugin()
+    new MiniCssExtractPlugin(),
+    new SourceMapDevToolPlugin({
+        filename: "[file].map"
+    }),
 ]
 
 module.exports = {
@@ -58,7 +62,12 @@ module.exports = {
                         loader: "file-loader"
                     }
                 ]
-            }
+            },
+            {
+                test: /\.js$/,
+                enforce: 'pre',
+                use: ['source-map-loader'],
+              },
         ]
     }
 }

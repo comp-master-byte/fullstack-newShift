@@ -14,7 +14,7 @@ export const CreateTaskPage = () => {
     const isShowSuccessAlert = useSelector(state => state.isShowAlert.successAlert);
 
     const [newDataTask, setNewDataTask] = useState({ title: "", content: "" });
-    const [selectedDate, setSelectedDate] = useState(new Date(moment()))
+    const [selectedDate, setSelectedDate] = useState(new Date(moment()));
     const [isAdded, setIsAdded] = useState(false);
 
     const handleChange = newValue => setSelectedDate(newValue);
@@ -68,8 +68,8 @@ export const CreateTaskPage = () => {
                 onChangeTitle={event => setNewDataTask({ ...newDataTask, title: event.target.value })}
                 onChangeContent={event => setNewDataTask({ ...newDataTask, content: event.target.value })}
                 onChangeDate={handleChange}
-                primaryBtnText={"Добавить"}
             />
+
             {isAdded &&
                 <ResultOfAction goWhere="главную" to="/" resultText="Задача успешно создана." />
             }
