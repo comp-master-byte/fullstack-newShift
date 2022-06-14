@@ -15,7 +15,8 @@ export const Card = (props) => {
 
     const { item, index, moveItem, status } = props;
 
-    const slicedContent = item.content.split(" ").slice(0, MAX_CONTENT_LENGTH).join(" ");
+    let slicedContent = item.content.split(" ").slice(0, MAX_CONTENT_LENGTH).join(" ");
+    let ifEquilToMax = slicedContent.split(" ").length === 140 ? slicedContent + "..." : slicedContent
 
     const navigate = useNavigate();
 
@@ -80,7 +81,7 @@ export const Card = (props) => {
             >
                 <div className={styles.colorBar} style={{ backgroundColor: status.color }} />
                 <div className={styles.itemTitle}>{item.title}</div>
-                <div className={styles.itemContent}>{slicedContent}</div>
+                <div className={styles.itemContent}>{ifEquilToMax}</div>
                 <div className={styles.itemFooter}>
                     <div className={styles.itemDeadline}>{item.taskAssignedIn}</div>
                     <div className={styles.itemStatus}>{item.icon}</div>
