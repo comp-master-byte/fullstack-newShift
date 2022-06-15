@@ -39,7 +39,7 @@ export const EditPage = () => {
             id: taskId,
             title: newDataTask.title,
             content: newDataTask.content,
-            taskAssignedIn: moment(selectedDate).format("DD.MM.YY")
+            taskAssignedIn: moment(selectedDate).format("DD.MM.YYYY")
         };
 
         if (!taskEdited.content || !taskEdited.title) {
@@ -121,7 +121,7 @@ export const EditPage = () => {
                 onChangeDate={handleChange}
                 confirmEditAction={confirmEditActionHandler}
                 confirmDeleteAction={confirmDeleteActionHandler}
-                primaryBtnText={"Изменить"}
+                primaryBtn={"Изменить"}
                 isDisabled={isDisabled}
                 editPageButtons
             />

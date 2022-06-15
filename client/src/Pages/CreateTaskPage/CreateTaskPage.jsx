@@ -68,6 +68,7 @@ export const CreateTaskPage = () => {
                 onChangeTitle={event => setNewDataTask({ ...newDataTask, title: event.target.value })}
                 onChangeContent={event => setNewDataTask({ ...newDataTask, content: event.target.value })}
                 onChangeDate={handleChange}
+                primaryBtn="Добавить"
             />
 
             {isAdded &&

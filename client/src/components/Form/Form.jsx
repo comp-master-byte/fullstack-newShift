@@ -18,6 +18,7 @@ export const Form = (props) => {
         confirmEditAction,
         confirmDeleteAction,
         editPageButtons,
+        primaryBtn,
         isDisabled
     } = props;
 
@@ -56,7 +57,7 @@ export const Form = (props) => {
                         </>
                     }
 
-                    <ShiftBtn isDisabled={isDisabled} onClick={onSubmit} btnText={"Добавить"} primary />
+                    <ShiftBtn isDisabled={isDisabled} onClick={onSubmit} btnText={primaryBtn} primary />
                 </div>
             </div>
         </div>
