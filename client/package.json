@@ -32,8 +32,6 @@
     "@date-io/date-fns": "^2.14.0",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
-    "@material-ui/lab": "^4.0.0-alpha.61",
-    "@mui/lab": "^5.0.0-alpha.85",
     "@mui/material": "^5.8.3",
     "@mui/x-date-pickers-pro": "^5.0.0-alpha.6",
     "@react-aria/ssr": "^3.2.0",
